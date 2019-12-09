@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   label = 'AppComponent';
+  year = 2019;
 
   constructor() {}
 }

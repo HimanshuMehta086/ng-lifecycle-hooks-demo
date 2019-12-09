@@ -1,20 +1,30 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  Input,
+  OnChanges,
+  SimpleChanges
+} from '@angular/core';
 
 @Component({
   selector: 'app-playground',
   templateUrl: './playground.component.html',
   styleUrls: ['./playground.component.css']
 })
-export class PlaygroundComponent implements OnInit, AfterViewInit {
+export class PlaygroundComponent implements OnInit, AfterViewInit, OnChanges {
+  @Input() prop;
   label = 'PlaygroundComponent';
 
   constructor() {
     console.log(`${this.label}: constructor`);
   }
 
-  //  It is possible to write the lifecycle methods without
-  //  explicitly implementing the interfaces
-  //  But it is a good practice to implement the interfaces
+  ngOnChanges(changes: SimpleChanges): void {
+    //  First call before ngOnInit: only if the parent binds
+    console.log(`${this.label}: ngOnChanges`, changes);
+  }
+
   ngOnInit() {
     //  Template rendering starts
     console.log(`${this.label}: ngOnInit`);
