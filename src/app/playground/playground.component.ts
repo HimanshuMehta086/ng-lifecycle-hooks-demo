@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./playground.component.css']
 })
 export class PlaygroundComponent implements OnInit {
+  label = 'PlaygroundComponent';
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor() {
+    console.log(`${this.label}: constructor`);
   }
 
+  ngOnInit() {}
 }
