@@ -2,7 +2,10 @@ import {
   Component,
   OnInit,
   AfterViewInit,
-  AfterContentInit
+  AfterContentInit,
+  AfterViewChecked,
+  AfterContentChecked,
+  DoCheck
 } from '@angular/core';
 
 @Component({
@@ -11,7 +14,13 @@ import {
   styleUrls: ['./playground.component.css']
 })
 export class PlaygroundComponent
-  implements OnInit, AfterViewInit, AfterContentInit {
+  implements
+    OnInit,
+    AfterViewInit,
+    AfterContentInit,
+    DoCheck,
+    AfterViewChecked,
+    AfterContentChecked {
   label = 'PlaygroundComponent';
 
   constructor() {
@@ -41,10 +50,42 @@ export class PlaygroundComponent
     //  Template rendering ends
     console.log(`${this.label}: ngAfterViewInit`);
   }
+
+  ngDoCheck(): void {
+    //  multiple calls
+    //  notifies the start of the change detection
+    //  fires for the first time after ngOnInit and before ngAfterContentInit
+    //  fires for the second time after ngAfterViewInit
+    //  subsequently, fires when any data-binding changes (value, property, and event)
+    console.log(`${this.label}: ngDoCheck`);
+  }
+
+  ngAfterViewChecked(): void {
+    //  multiple calls
+    //  notifies the end of change detection cycle for the component and its children
+    //  first fires after ngAfterViewInit but before the second ngDoCheck
+    console.log(`${this.label}: ngAfterViewChecked`);
+  }
+  ngAfterContentChecked(): void {
+    //  multiple calls
+    //  notifies the end of change detection cycle for the projected content
+    //  first fires after ngAfterContentInit but before ngAfterViewInit
+    console.log(`${this.label}: ngAfterContentChecked`);
+  }
 }
 
 //  So far
-//  1.  constructor
-//  2.  ngOnInit
-//  3.  ngAfterContentInit
-//  4.  ngAfterViewInit
+//   1.  constructor
+//   2.  ngOnInit
+//   3.  ngDoCheck //  first run
+//   4.  ngAfterContentInit
+//   5.  ngAfterContentChecked
+//   6.  ngAfterViewInit
+//   7.  ngAfterViewChecked
+//   8.  ngDoCheck //  second run
+//   9.  ngAfterContentChecked
+//  10.  ngAfterViewChecked
+//  -----------------------------
+//   A.  ngDoCheck //  subsequent run
+//   B.  ngAfterContentChecked
+//   C.  ngAfterViewChecked
