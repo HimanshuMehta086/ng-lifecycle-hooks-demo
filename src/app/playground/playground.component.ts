@@ -25,3 +25,11 @@ export class PlaygroundComponent implements OnInit, AfterViewInit {
     console.log(`${this.label}: ngAfterViewInit`);
   }
 }
+
+//  So far:
+//  1.  AppComponent constructor
+//  2.  PlaygroundComponent constructor
+//  3.  AppComponent ngOnInit
+//  4.  PlaygroundComponent ngOnInit
+//  5.  PlaygroundComponent ngAfterInit
+//  6.  AppComponent ngAfterInit
