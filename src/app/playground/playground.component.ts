@@ -35,3 +35,9 @@ export class PlaygroundComponent implements OnInit, AfterViewInit, OnChanges {
     console.log(`${this.label}: ngAfterViewInit`);
   }
 }
+
+//  So far:
+//  1.  constructor
+//  2.  ngOnChanges //  first call (on parent binding)
+//  3.  ngOnInit
+//  4.  ngAfterInit
