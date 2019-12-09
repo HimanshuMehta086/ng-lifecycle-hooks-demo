@@ -72,6 +72,13 @@ export class PlaygroundComponent
     //  first fires after ngAfterContentInit but before ngAfterViewInit
     console.log(`${this.label}: ngAfterContentChecked`);
   }
+
+  handler() {
+    //   Call to handler causes
+    //   A.  ngDoCheck //  subsequent run
+    //   B.  ngAfterContentChecked
+    //   C.  ngAfterViewChecked
+  }
 }
 
 //  So far
