@@ -41,3 +41,5 @@ export class PlaygroundComponent implements OnInit, AfterViewInit, OnChanges {
 //  2.  ngOnChanges //  first call (on parent binding)
 //  3.  ngOnInit
 //  4.  ngAfterInit
+//  ---------------
+//  5.  ngOnChanges //  subsequent call (on parent binding)

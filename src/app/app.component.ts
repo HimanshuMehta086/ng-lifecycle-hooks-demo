@@ -9,5 +9,9 @@ export class AppComponent {
   label = 'AppComponent';
   year = 2019;
 
-  constructor() {}
+  constructor() {
+    setTimeout(() => {
+      this.year++;
+    }, 3000);
+  }
 }
