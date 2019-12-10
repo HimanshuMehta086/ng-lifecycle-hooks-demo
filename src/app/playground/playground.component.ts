@@ -5,7 +5,10 @@ import {
   AfterContentInit,
   AfterViewChecked,
   AfterContentChecked,
-  DoCheck
+  DoCheck,
+  OnChanges,
+  SimpleChanges,
+  Input
 } from '@angular/core';
 
 @Component({
@@ -20,8 +23,10 @@ export class PlaygroundComponent
     AfterContentInit,
     DoCheck,
     AfterViewChecked,
-    AfterContentChecked {
+    AfterContentChecked,
+    OnChanges {
   label = 'PlaygroundComponent';
+  @Input() year;
 
   constructor() {
     //  One-time notification
@@ -79,6 +84,10 @@ export class PlaygroundComponent
     //   B.  ngAfterContentChecked
     //   C.  ngAfterViewChecked
   }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(`${this.label}: ngOnChanges`, changes);
+  }
 }
 
 //  So far
@@ -93,6 +102,7 @@ export class PlaygroundComponent
 //   9.  ngAfterContentChecked
 //  10.  ngAfterViewChecked
 //  -----------------------------
-//   A.  ngDoCheck //  subsequent run
-//   B.  ngAfterContentChecked
-//   C.  ngAfterViewChecked
+//   A.  ngOnChanges //  subsequent run
+//   B.  ngDoCheck //  subsequent run
+//   C.  ngAfterContentChecked
+//   D.  ngAfterViewChecked

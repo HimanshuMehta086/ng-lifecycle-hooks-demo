@@ -7,6 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   label = 'AppComponent';
+  year = 2019;
 
-  constructor() {}
+  constructor() {
+    setTimeout(() => {
+      this.year = 2020;
+    }, 5000);
+  }
 }
