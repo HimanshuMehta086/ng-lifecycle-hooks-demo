@@ -1,5 +1,8 @@
 <app-navbar></app-navbar>
 
 <div class="container">
-  <app-playground></app-playground>
+  <app-playground>
+    <!-- Doesn't cause ngAfterContentInit to trigger again -->
+    <h1 *ngIf="predicate">Hello there!</h1>
+  </app-playground>
 </div>

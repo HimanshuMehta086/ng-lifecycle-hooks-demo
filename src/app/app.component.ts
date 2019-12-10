@@ -7,6 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   label = 'AppComponent';
+  predicate = false;
 
-  constructor() {}
+  constructor() {
+    setTimeout(() => {
+      this.predicate = true;
+    }, 5000);
+  }
 }
