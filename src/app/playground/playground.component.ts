@@ -85,6 +85,7 @@ export class PlaygroundComponent
     //   C.  ngAfterViewChecked
   }
 
+  //  Using ngOnChanges and ngDoCheck is not recommended
   ngOnChanges(changes: SimpleChanges): void {
     console.log(`${this.label}: ngOnChanges`, changes);
   }
